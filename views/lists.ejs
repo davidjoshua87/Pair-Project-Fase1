@@ -20,11 +20,14 @@
 
          </div>
 
-           <ul class="nav navbar-nav navbar-right">
+             <form  action="/logout" method="post">
 
-             <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+             <ul class="nav navbar-nav navbar-right">
+               <li><button><span class="glyphicon glyphicon-log-in"></span>Logout</button></li>
+             </ul>
 
-           </ul>
+
+           </form>
 
          </div>
 
@@ -95,8 +98,8 @@
           <tr><td><%= list[i].title %></td>
           <td><%= list[i].price %></td>
           <form action="/addtocart/<%= list[i].id%>" method="post">
-          <td><input type="submit" class="btn btn-primary" value="Add to Cart"/></td></tr>
-        </form>
+            <td><input type="submit" class="btn btn-primary" value="Add to Cart"/></td></tr>
+          </form>
         <% } %>
 
 

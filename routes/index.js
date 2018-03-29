@@ -21,13 +21,23 @@ router.post('/', (req, res) => {
     isLogin: "false"
   }
 
-  model
-    .User
-    .create(signup)
-    .then(response => res.redirect('/login'))
-    .catch(err => console.log(err));
+  if (signup.name != ''&&
+      signup.user_name != '' &&
+      signup.email != '' &&
+      signup.password != '') {
 
-})
+      model
+      .User
+      .create(signup)
+      .then(response => res.redirect('/login'))
+      .catch(err => console.log(err))
+
+    } else {
+      console.log('error');
+    }
+
+  })
+
 
 router.get('/login', (req, res) => {
 
@@ -38,23 +48,40 @@ router.get('/login', (req, res) => {
 router.post('/login', (req, res) => {
 
   model.User.findOne({where: {username: req.body.uname, password: req.body.psw, role: 'customer'}})
-  .then((user) => {
-    if (user != null) {
+  .then((login) => {
+    if (login != null) {
 
-      user.update(isLogin = 'true',{where: {username: req.body.uname}})
+          model.User.update({isLogin : 'true'},{where: {username: req.body.uname}})
 
-      res.redirect('lists')
-    }
-  })
+            res.redirect('/lists')
+
+        }
+    })
 
   model.User.findOne({where: {username: req.body.uname, password: req.body.psw, role: 'seller'}})
   .then((user) => {
     if (user != null) {
-      res.redirect('seller')
+      model.User.update({isLogin : 'true'},{where: {username: req.body.uname}})
+
+        res.redirect('seller')
+
     }
   })
 
-  .catch(err => console.log(err))
+      .catch(err => console.log(err))
+
+  })
+
+router.post('/logout', (req, res) => {
+
+  model.User.findOne({where: {isLogin: 'true'}})
+  .then(user => {
+
+    model.User.update({isLogin : 'false'},{where: {isLogin: 'true'}})
+
+      res.redirect('/')
+
+  })
 
 })
 
@@ -133,14 +160,20 @@ router.post('/seller/update', (req, res) => {
 
 router.post('/addtocart/:id', (req, res) => {
 
-  const cart = {
-    BookId: req.params.id,
-    UserId: 0,
-    TransactionId: 0,
-    Qty:0
-  }
+  model.User.findOne({where: {isLogin: 'true'}})
+  .then(user_id => {
 
-  model.Chart.create(cart)
+    const cart = {
+      BookId: req.params.id,
+      UserId: user_id.id,
+      TransactionId: 0,
+      Qty:0
+    }
+
+    model.Chart.create(cart)
+
+  })
+
 
 })
 
