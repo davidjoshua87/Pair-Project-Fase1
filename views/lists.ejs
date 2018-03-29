@@ -1,0 +1,110 @@
+<html>
+  <head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="./static/css/main.css">
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <nav class="navbar navbar-inverse">
+
+      <h1 class="navbar-brand">List Books</h1>
+
+       <div class="container-fluid">
+
+         <div class="navbar-header">
+
+
+         </div>
+
+           <ul class="nav navbar-nav navbar-right">
+
+             <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+
+           </ul>
+
+         </div>
+
+       </div>
+
+
+
+    </nav>
+
+  </head>
+
+  <style>
+
+  h1{
+    color: white;
+    font-size: 50px;
+    padding-left: 2%;
+    padding-bottom: 1%;
+  }
+
+  .navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: black;
+  }
+
+  input{
+    text-align: center;
+    width: 80%;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 90%;
+  }
+
+  th, td {
+    text-align: left;
+    padding-left: 10%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+
+  tr:nth-child(even){background-color: #f2f2f2}
+
+  th {
+      background-color: #4CAF50;
+      color: white;
+  }
+
+  </style>
+
+  <body>
+
+    <center>
+
+      <table>
+
+
+
+        <tr>
+          <td><b>Title</b></td>
+          <td><b>Price</b></td>
+          <td><b>Qty</b></td>
+        </tr>
+
+        <% for (let i = 0; i < list.length; i++) { %>
+          <tr><td><%= list[i].title %></td>
+          <td><%= list[i].price %></td>
+          <form action="/addtocart/<%= list[i].id%>" method="post">
+          <td><input type="submit" class="btn btn-primary" value="Add to Cart"/></td></tr>
+        </form>
+        <% } %>
+
+
+
+      </table>
+
+    </center>
+
+  </body>
+
+</html>

@@ -1,0 +1,17 @@
+<head>
+
+</head>
+<body>
+    <h1>Edit Book</h1>
+    <form action='/seller/update' method='post'>
+        Title: <br>
+        <input type='text' name='title' value="<%= book.title %>"> <br>
+        Price: <br>
+        <input type='text' name='price' value="<%= book.price %>"><br>
+        Stock: <br>
+        <input type='text' name='stock' value="<%= book.stock %>"><br>
+        <input type="hidden" name="id" value="<%= book.id %>">
+        <input type="submit" value="Submit">
+    </form>
+
+</body>

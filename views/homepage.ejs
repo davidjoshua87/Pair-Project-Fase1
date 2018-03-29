@@ -3,7 +3,6 @@
 <head>
  <title>Book Store</title>
  <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
  <style>
@@ -54,11 +53,12 @@
 
   <nav class="navbar navbar-inverse">
 
+    <a class="navbar-brand">My Book Store</a>
+
    <div class="container-fluid">
 
      <div class="navbar-header">
 
-       <a class="navbar-brand" href="#">My Book Store</a>
 
      </div>
 
@@ -78,21 +78,24 @@
 
     <h1>Sign Up</h1>
 
-      <form action="/login" method="post" >
+      <form action="/" method="post" >
         Name:<br>
-        <input type="text" name=" name">
+        <input type="text" placeholder="Input Your Name" name="name">
         <br>
         User Name:<br>
-        <input type="text" name="user_name">
+        <input type="text" placeholder="User Name" name="user_name">
         <br>
         Email:<br>
-        <input type="text" name="email">
+        <input type="text" placeholder="Email" name="email">
         <br>
         Password:<br>
-        <input type="text" name="password">
+        <input type="password" placeholder="Enter Password" name="password">
         <br>
         Role:<br>
-        <input type="text" name="role">
+        <select  name="role">
+          <option value="seller">Seller</option>
+          <option value="customer">Customer</option>
+        </select>
         <br>
         <br><br>
         <input type="submit" value="Register">

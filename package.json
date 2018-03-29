@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/davidjoshua87/pair-project#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "sequelize": "^4.37.4"
   }
